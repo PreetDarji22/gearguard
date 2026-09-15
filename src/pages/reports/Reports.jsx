@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "../../lib/firebase";
-import { format, startOfMonth, eachMonthOfInterval, subMonths } from "date-fns";
+import { format, eachMonthOfInterval, subMonths } from "date-fns";
 
 const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6", "#ec4899"];
 

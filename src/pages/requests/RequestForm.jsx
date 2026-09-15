@@ -72,7 +72,7 @@ const RequestForm = () => {
             setOriginalData(docSnap.data());
           }
         }
-      } catch (err) {
+      } catch {
         toast.error("Error loading form data");
       } finally {
         setLoading(false);
@@ -147,7 +147,7 @@ const RequestForm = () => {
       }
 
       navigate("/requests");
-    } catch (err) {
+    } catch {
       toast.error("Failed to save request");
     } finally {
       setSaving(false);

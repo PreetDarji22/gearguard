@@ -30,7 +30,7 @@ const TeamList = () => {
           memberCount: doc.data().members?.length || 0
         }));
         setTeams(data);
-      } catch (error) {
+      } catch {
         toast.error("Failed to load teams.");
       } finally {
         setLoading(false);
@@ -50,7 +50,7 @@ const TeamList = () => {
         await deleteDoc(doc(db, "teams", id));
         setTeams(teams.filter(t => t.id !== id));
         toast.success("Team deleted successfully");
-      } catch (err) {
+      } catch {
         toast.error("Failed to delete team");
       }
     }

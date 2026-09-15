@@ -1,13 +1,36 @@
 import os
+import re
 
 def clean_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+        content = f.read()
+
+    # catch (err) -> catch
+    content = re.sub(r'catch\s*\(\s*(?:err|error)\s*\)', 'catch', content)
     
-    new_lines = [line for line in lines if "创新:" not in line and "innovation:" not in line]
-    
+    # Reports.jsx unused startOfMonth
+    if filepath.endswith('Reports.jsx'):
+        content = re.sub(r',\s*startOfMonth', '', content)
+        content = re.sub(r'startOfMonth\s*,', '', content)
+
+    # RequestBoard.jsx unused arrayMove, getDocs, isOverlay, event
+    if filepath.endswith('RequestBoard.jsx'):
+        content = re.sub(r',\s*arrayMove', '', content)
+        content = re.sub(r'arrayMove\s*,', '', content)
+        content = re.sub(r',\s*getDocs', '', content)
+        content = re.sub(r'getDocs\s*,', '', content)
+        
+        # for isOverlay:
+        # const SortableTask = ({ task, onTaskClick, isAdmin, isOverlay }) => {
+        content = re.sub(r',\s*isOverlay', '', content)
+        content = re.sub(r'isOverlay\s*,', '', content)
+        
+        # for event: (event) => ...
+        content = re.sub(r'\(\s*event\s*\)\s*=>', '() =>', content)
+        content = re.sub(r'event\s*=>', '() =>', content)
+        
     with open(filepath, 'w', encoding='utf-8') as f:
-        f.writelines(new_lines)
+        f.write(content)
 
 def run():
     src_dir = 'src'

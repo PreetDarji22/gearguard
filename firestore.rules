@@ -31,4 +31,4 @@ service cloud.firestore {
     }
   }
 }
-创新: Precise role-based security rules.
+// 创新: Precise role-based security rules.

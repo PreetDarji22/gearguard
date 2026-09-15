@@ -11,7 +11,7 @@ import {
   AlertTriangle,
   Package
 } from "lucide-react";
-import { collection, query, getDocs, where, orderBy } from "firebase/firestore";
+import { collection, query, getDocs, orderBy } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";

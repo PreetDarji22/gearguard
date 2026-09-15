@@ -41,7 +41,7 @@ const TeamDetail = () => {
             setSelectedMemberIds(data.members || []);
           }
         }
-      } catch (err) {
+      } catch {
         toast.error("Error loading team details");
       } finally {
         setLoading(false);
@@ -81,7 +81,7 @@ const TeamDetail = () => {
         toast.success("Team updated!");
       }
       navigate("/teams");
-    } catch (err) {
+    } catch {
       toast.error("Failed to save team");
     } finally {
       setSaving(false);
@@ -95,7 +95,7 @@ const TeamDetail = () => {
         await deleteDoc(doc(db, "teams", id));
         toast.success("Team deleted!");
         navigate("/teams");
-      } catch (err) {
+      } catch {
         toast.error("Failed to delete team");
         setSaving(false);
       }

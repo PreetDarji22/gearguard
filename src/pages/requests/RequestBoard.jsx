@@ -10,7 +10,7 @@ import {
   defaultDropAnimationSideEffects
 } from "@dnd-kit/core";
 import { 
-  arrayMove, 
+   
   SortableContext, 
   sortableKeyboardCoordinates, 
   verticalListSortingStrategy,
@@ -28,7 +28,7 @@ import {
   MoreHorizontal,
   X
 } from "lucide-react";
-import { collection, query, getDocs, updateDoc, doc, onSnapshot, orderBy } from "firebase/firestore";
+import { collection, query, updateDoc, doc, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -39,7 +39,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const STAGES = ["New", "In Progress", "Repaired", "Scrap"];
 
-const KanbanCard = ({ request, isOverlay }) => {
+const KanbanCard = ({ request }) => {
   const {
     attributes,
     listeners,
@@ -169,11 +169,11 @@ const RequestBoard = () => {
     return unsubscribe;
   }, []);
 
-  const handleDragStart = (event) => {
+  const handleDragStart = () => {
     setActiveId(event.active.id);
   };
 
-  const handleDragOver = async (event) => {
+  const handleDragOver = async () => {
     const { active, over } = event;
     if (!over) return;
 
@@ -196,7 +196,7 @@ const RequestBoard = () => {
     }
   };
 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = () => {
     setActiveId(null);
   };
 

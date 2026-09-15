@@ -9,10 +9,11 @@ import {
   Clock,
   ArrowUpRight
 } from "lucide-react";
-import { collection, query, getDocs, orderBy, limit, where, onSnapshot, doc, updateDoc, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, query, getDocs, orderBy, onSnapshot, doc, updateDoc, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useAuth } from "../../context/AuthContext";
 
+// eslint-disable-next-line no-unused-vars
 const StatCard = ({ title, value, icon: Icon, color, trend }) => (
   <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
     <div className="flex items-center justify-between mb-4">

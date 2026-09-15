@@ -61,7 +61,7 @@ const EquipmentDetail = () => {
             setOpenRequestsCount(reqSnap.size);
           }
         }
-      } catch (err) {
+      } catch {
         toast.error("Error loading equipment details");
       } finally {
         setLoading(false);
@@ -86,7 +86,7 @@ const EquipmentDetail = () => {
         toast.success("Equipment updated successfully!");
       }
       navigate("/equipment");
-    } catch (err) {
+    } catch {
       toast.error("Failed to save equipment");
     } finally {
       setSaving(false);
@@ -102,7 +102,7 @@ const EquipmentDetail = () => {
       // Log a note if needed (per requirements, this happens usually via maintenance request, but we add a manual toggle too)
       setFormData(prev => ({ ...prev, isScraped: true }));
       toast.success("Equipment marked as scrapped.");
-    } catch (err) {
+    } catch {
       toast.error("Failed to scrap equipment");
     } finally {
       setSaving(false);
